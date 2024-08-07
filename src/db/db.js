@@ -5,6 +5,7 @@ export const zones = [
         setPointTemperature: 20,
         roomTemperature: 20,
         roomName: "Living room",
+        mode: "confort",
         roomId: "1",
     },
     {
@@ -12,6 +13,7 @@ export const zones = [
         setPointTemperature: 24,
         roomTemperature: 20,
         roomName: "Bedroom 1",
+        mode: "heat",
         roomId: "2",
     },
     {
@@ -19,6 +21,7 @@ export const zones = [
         setPointTemperature: 18,
         roomTemperature: 20,
         roomName: "Bedroom 2",
+        mode: "cool",
         roomId: "3",
     },
     {
@@ -26,6 +29,7 @@ export const zones = [
         setPointTemperature: 20,
         roomTemperature: 20,
         roomName: "Bedroom 3",
+        mode: "",
         roomId: "4",
     },
     {
@@ -33,6 +37,7 @@ export const zones = [
         setPointTemperature: 24,
         roomTemperature: 20,
         roomName: "Bedroom 4",
+        mode: "heat",
         roomId: "5",
     },
     {
@@ -40,6 +45,7 @@ export const zones = [
         setPointTemperature: 20,
         roomTemperature: 20,
         roomName: "Garage",
+        mode: "",
         roomId: "6",
     },
     {
@@ -47,6 +53,7 @@ export const zones = [
         setPointTemperature: 20,
         roomTemperature: 20,
         roomName: "Living room",
+        mode: "confort",
         roomId: "7",
     },
     {
@@ -54,6 +61,7 @@ export const zones = [
         setPointTemperature: 18,
         roomTemperature: 20,
         roomName: "Kitchen",
+        mode: "cool",
         roomId: "8",
     },
 ];

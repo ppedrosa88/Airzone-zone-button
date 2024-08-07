@@ -7,24 +7,19 @@ const useZoneStore = defineStore('zone', () => {
 
     const setActivate = (zoneId) => {
         zones.value = zones.value.map(zone => {
-            if (zone.roomId === zoneId) {
-                return { ...zone, isOn: !zone.isOn };
-            }
-            return zone
+            return zone.roomId === zoneId
+                ? { ...zone, isOn: !zone.isOn }
+                : zone
         })
     }
 
     const changeTemp = (zoneId, temp) => {
         zones.value = zones.value.map(zone => {
-            if (zone.roomId === zoneId) {
-                console.log(zone.roomTemperature)
-                return { ...zone, setPointTemperature: zone.setPointTemperature + temp };
-            }
-            return zone
+            return zone.roomId === zoneId
+                ? { ...zone, setPointTemperature: zone.setPointTemperature + temp }
+                : zone
         })
     }
-
-
 
     return {
         // State properties
@@ -34,10 +29,7 @@ const useZoneStore = defineStore('zone', () => {
         setZones: (zones) => zones.value = zones,
         setActivate: (zoneId) => setActivate(zoneId),
         addNewZone: (zone) => zones.value.push(zone),
-        changeTemp: (zoneId, temp) => {
-            changeTemp(zoneId, temp)
-        },
-
+        changeTemp: (zoneId, temp) => changeTemp(zoneId, temp),
     }
 })
 

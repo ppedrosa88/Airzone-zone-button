@@ -4,7 +4,6 @@ import useConfigTemp from "./composables/useConfigTemp";
 import PowerIcon from "./assets/icons/PowerIcon.vue";
 import HeatIcon from "./assets/icons/HeatIcon.vue";
 import CoolIcon from "./assets/icons/CoolIcon.vue";
-import useZoneStore from "./store/zonesStore";
 
 const props = defineProps({
   isOn: Boolean,
@@ -13,16 +12,14 @@ const props = defineProps({
   roomName: String,
   statusClass: String,
   statusText: String,
+  mode: String,
   roomId: String,
 });
 
 const emits = defineEmits(["pushTo"]);
 
-const { statusClass, statusText, toggleZone, pushTo } = useConfigTemp(props);
+const { statusClass, statusText, toggleZone } = useConfigTemp(props);
 
-const zonesStore = useZoneStore();
-
-const { setActivate } = zonesStore;
 </script>
 
 <template>
@@ -38,8 +35,8 @@ const { setActivate } = zonesStore;
         <p class="zone-name">{{ props.roomName }}</p>
         <p class="zone-status">{{ statusText }}</p>
       </div>
-      <button class="zone-off" @click.stop="() => setActivate(props.roomId)">
-        <PowerIcon color="#9AA5B1" />
+      <button class="zone-off" @click.stop="() => toggleZone(props.roomId)">
+        <PowerIcon />
       </button>
       <div class="zone-icon" v-if="isOn">
         <div v-if="statusClass === 'heating'">
