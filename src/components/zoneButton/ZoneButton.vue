@@ -18,15 +18,14 @@ const props = defineProps({
 
 const emits = defineEmits(["pushTo"]);
 
-const { statusClass, statusText, toggleZone } = useConfigTemp(props);
-
+const { statusText, toggleZone, modeMutation } = useConfigTemp(props);
 </script>
 
 <template>
   <transition name="status-change" mode="out-in">
     <div
       class="zone-button"
-      :class="statusClass"
+      :class="modeMutation"
       @click.stop="emits('pushTo')"
       :key="statusClass"
     >
@@ -39,10 +38,10 @@ const { statusClass, statusText, toggleZone } = useConfigTemp(props);
         <PowerIcon />
       </button>
       <div class="zone-icon" v-if="isOn">
-        <div v-if="statusClass === 'heating'">
+        <div v-if="modeMutation === 'heating'">
           <HeatIcon />
         </div>
-        <div v-if="statusClass === 'cooling'">
+        <div v-if="modeMutation === 'cooling'">
           <CoolIcon />
         </div>
       </div>

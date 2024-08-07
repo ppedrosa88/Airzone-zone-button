@@ -1,4 +1,6 @@
 <script setup>
+import useConfigTemp from './zoneButton/composables/useConfigTemp';
+
 
 const emits = defineEmits(["close", "changeTemperature", 'setOnOff']);
 
@@ -12,6 +14,8 @@ const props = defineProps({
       roomId: String,
     },
 })
+
+const {changeModeManual} = useConfigTemp()
 
 const changeTemp = (zoneId, temp) => emits("changeTemperature", zoneId, temp)
 const close = () => emits("close");
@@ -27,6 +31,13 @@ const changePowerStatus = (zoneId) => emits('setOnOff', zoneId)
             <p><span>AMBIENT TEMP</span> {{ props.selectedZone.roomTemperature }}</p>
             <p><span>SET TEMP</span> {{ props.selectedZone.setPointTemperature }}</p>
           </div>
+          <div class="display-mode">
+
+            <img v-if="props.selectedZone.mode === 'heat'" src="../components/zoneButton/assets/icons/heat.svg" alt="heat">
+            <img v-if="props.selectedZone.mode === 'cool'" src="../components/zoneButton/assets/icons/cool.svg" alt="cool">
+            <img v-if="props.selectedZone.mode === 'confort'" src="../assets/c-48.png" alt="confort"/>
+            
+          </div>
         </div>
       
         <div class="tiny-logo"><img src="/public/airzone.svg" alt="AirzoneLogo"></div>
@@ -35,6 +46,11 @@ const changePowerStatus = (zoneId) => emits('setOnOff', zoneId)
         <div class="btn-group">
           <button class="control-button" @click="changeTemp( props.selectedZone.roomId, -1 )">-</button>
           <button class="control-button" @click="changeTemp( props.selectedZone.roomId, 1 )">+</button>
+        </div>
+        <div class="btn-group">
+          <button class="control-button" @click="changeModeManual( props.selectedZone.roomId, 'heat' )"> <img src="./zoneButton/assets/icons/heat.svg" alt="heat"> </button>
+          <button class="control-button" @click="changeModeManual( props.selectedZone.roomId, 'confort' )"> <img src="../assets/c-48.png" alt="confort"> </button>
+          <button class="control-button" @click="changeModeManual( props.selectedZone.roomId, 'cool' )"> <img src="./zoneButton/assets/icons/cool.svg" alt="cool"> </button>
         </div>
         <div class="btn-group">
         </div>
@@ -176,4 +192,14 @@ const changePowerStatus = (zoneId) => emits('setOnOff', zoneId)
   scale: 0.98;
 }
 
+.display-mode {
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+   & p {
+    font-size: 30px;
+   }
+}
 </style>

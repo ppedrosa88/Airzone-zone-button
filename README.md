@@ -102,13 +102,14 @@ The `zoneButton` component accepts the following props:
 Here are the primary functions available for configuration:
 
 - **`changeTemperature(zoneId, temp)`**: Changes the temperature setting for the specified zone.
-- **Parameters**:
-- `zoneId` (`String`): The unique identifier of the zone.
-- `temp` (`Number`): The new temperature to set.
+
+  - **Parameters**:
+  - `zoneId` (`String`): The unique identifier of the zone.
+  - `temp` (`Number`): The new temperature to set.
 
 - **`toggleZone(zoneId)`**: Toggles the on/off state of the specified zone.
-- **Parameters**:
-- `zoneId` (`String`): The unique identifier of the zone.
+  - **Parameters**:
+  - `zoneId` (`String`): The unique identifier of the zone.
 
 ## Usage Example
 

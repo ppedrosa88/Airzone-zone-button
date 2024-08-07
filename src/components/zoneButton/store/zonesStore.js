@@ -21,6 +21,14 @@ const useZoneStore = defineStore('zone', () => {
         })
     }
 
+    const changeMode = (zoneId, mode) => {
+        zones.value = zones.value.map(zone => {
+            return zone.roomId === zoneId
+                ? { ...zone, mode: mode }
+                : zone
+        })
+    }
+
     return {
         // State properties
         zones,
@@ -30,6 +38,7 @@ const useZoneStore = defineStore('zone', () => {
         setActivate: (zoneId) => setActivate(zoneId),
         addNewZone: (zone) => zones.value.push(zone),
         changeTemp: (zoneId, temp) => changeTemp(zoneId, temp),
+        changeMode: (zoneId, mode) => changeMode(zoneId, mode)
     }
 })
 
